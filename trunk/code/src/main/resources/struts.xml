@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd"
+	>
+<struts>
+	<!-- 用于CRUD Action的parent package -->
+	<package name="default" extends="convention-default">
+		<!-- 拦截器 -->
+		<interceptors>
+		    <interceptor name="excepitonStack" class="com.tohours.hbj.web.interceptor.ExceptionInterceptor" />
+		    <interceptor name="logStack" class="com.tohours.hbj.web.interceptor.LogInterceptor" />
+		    <interceptor name="adminStack" class="com.tohours.hbj.web.interceptor.AdminInterceptor" />
+		    <interceptor-stack name="allDefaultStack">
+		        <interceptor-ref name="defaultStack"/>
+		   		<interceptor-ref name="excepitonStack"/>
+		   		<interceptor-ref name="logStack"/>
+		    </interceptor-stack>
+		    <interceptor-stack name="adminDefaultStack">
+		   		<interceptor-ref name="allDefaultStack"/>
+		   		<interceptor-ref name="adminStack"/>
+		    </interceptor-stack>
+		</interceptors>
+
+		<!-- 默认拦截器 -->
+		<default-interceptor-ref name="allDefaultStack" />
+
+		<!-- 默认Action -->
+		<default-action-ref name="index" />
+
+		<!-- 全局结果 -->
+		<global-results>
+			<result name="error">/WEB-INF/content/error/error.jsp</result>
+		</global-results>
+
+		<!-- 全局异常处理 -->
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="com.tohours.hbj.exception.ProjectException" />
+		</global-exception-mappings>
+		
+	</package>
+</struts>

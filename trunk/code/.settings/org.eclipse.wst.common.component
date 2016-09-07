@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="cnmap">
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <property name="component.exclusion.patterns" value="**/rebel.xml,**/hibernate.reveng.xml,**/hibernate-mysql.cfg.xml,**/hibernate-mysql.reveng.xml"/>
+        <property name="java-output-path" value="/hbj/target/classes"/>
+        <property name="context-root" value="hbj"/>
+    </wb-module>
+</project-modules>
