@@ -25,10 +25,7 @@
 	          	<IMG src="static/images/page_end.gif" />
 	        </pg:last>
           </td>     	
-          <td width="16%">
-          	输入页码:<s:textfield name="pages" size="2" maxlength="10" />
-          	<a href="javascript:go($('#pages').val());"  style="text-decoration: none;color: #585956" >GO</a>
-          	<img border="0" src="static/images/awwow.gif" />
+          <td width="40%">
           	<s:hidden name="pager.offset" />
           	<script>
           		function go(page_num){

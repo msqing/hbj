@@ -48,7 +48,7 @@
 		</property>
 	</bean>
 	<bean id="dataSource" class="com.tohours.hbj.util.MyDataSource">
-			<property name="DBName" value="health" />
+			<property name="DBName" value="hbj" />
 			<property name="target" ref="hiddenDataSource" />
 			<property name="printDebug" value="true" />
 	</bean>

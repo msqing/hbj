@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "Slxxgs")
@@ -25,6 +26,8 @@ public class EffectInfo implements Serializable{
 	private Date endTime;
 	private String attachment;
 	private String fkId;
+	@SuppressWarnings("unused")
+	private boolean timeOut;
 	
 	@Id
 	@Column(name="Id")
@@ -107,4 +110,20 @@ public class EffectInfo implements Serializable{
 	public void setFkId(String fkId) {
 		this.fkId = fkId;
 	}
+
+	@Transient
+	public boolean isTimeOut() {
+		Long endTime = getEndTime().getTime();
+		Long currentTime = new Date().getTime();
+		if(currentTime > endTime){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public void setTimeOut(boolean timeOut) {
+		this.timeOut = timeOut;
+	}
+
+	
 }

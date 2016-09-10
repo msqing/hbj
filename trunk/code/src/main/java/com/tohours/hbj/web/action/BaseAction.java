@@ -35,7 +35,7 @@ import com.tohours.hbj.entity.Pager;
 import com.tohours.hbj.entity.User;
 import com.tohours.hbj.exception.BusinessException;
 import com.tohours.hbj.service.AdminService;
-import com.tohours.hbj.service.SearchService;
+import com.tohours.hbj.service.NewsService;
 
 @EqualsAndHashCode(callSuper = false)
 public @Data class BaseAction extends ActionSupport {
@@ -55,7 +55,7 @@ public @Data class BaseAction extends ActionSupport {
 	@Autowired
 	private AdminService adminService;
 	@Autowired 
-	private SearchService searchService;
+	private NewsService newsService;
 	
 	private String pages;
 	

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "JsxmJunGongspjdgg")
@@ -26,9 +27,11 @@ public class SaveExamine implements Serializable{
 	private String title;
 	private String index;
 	private String content;
-	private String time;
+	private Date time;
 	private Date startTime;
 	private Date endTime;
+	@SuppressWarnings("unused")
+	private boolean timeOut;
 
 	@Id
 	@Column(name="Id")
@@ -97,10 +100,10 @@ public class SaveExamine implements Serializable{
 	}
 
 	@Column(name="pwtime")
-	public String getTime() {
+	public Date getTime() {
 		return time;
 	}
-	public void setTime(String time) {
+	public void setTime(Date time) {
 		this.time = time;
 	}
 
@@ -118,5 +121,19 @@ public class SaveExamine implements Serializable{
 	}
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
+	}
+	
+	@Transient
+	public boolean isTimeOut() {
+		Long endTime = getEndTime().getTime();
+		Long currentTime = new Date().getTime();
+		if(currentTime > endTime){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public void setTimeOut(boolean timeOut) {
+		this.timeOut = timeOut;
 	}
 }

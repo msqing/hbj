@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "Nspgs")
@@ -27,11 +28,14 @@ public class EffectPreExamine implements Serializable{
 	private String basicFacts;
 	private String policyAttachment;
 	private String participateInfo;
+	private String participateAttachment;
 	private String promiseAttachment;
 	private String decision;
 	private String reason;
 	private Date startTime;
 	private Date endTime;
+	@SuppressWarnings("unused")
+	private boolean timeOut;
 
 	@Id
 	@Column(name="Id")
@@ -146,4 +150,28 @@ public class EffectPreExamine implements Serializable{
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
+	
+	@Transient
+	public boolean isTimeOut() {
+		Long endTime = getEndTime().getTime();
+		Long currentTime = new Date().getTime();
+		if(currentTime > endTime){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public void setTimeOut(boolean timeOut) {
+		this.timeOut = timeOut;
+	}
+
+	@Column(name="gzcyfile")
+	public String getParticipateAttachment() {
+		return participateAttachment;
+	}
+	public void setParticipateAttachment(String participateAttachment) {
+		this.participateAttachment = participateAttachment;
+	}
+	
+	
 }

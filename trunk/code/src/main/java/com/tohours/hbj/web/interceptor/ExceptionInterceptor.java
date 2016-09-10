@@ -38,7 +38,7 @@ public class ExceptionInterceptor extends AbstractInterceptor {
 					contextPath = "";
 				}
 				StringBuffer sb = new StringBuffer("<script type='text/javascript'>");
-				sb.append("location.href = '%s/admin/loginPre.do';");
+				sb.append("location.href = '%s/loginPre.do';");
 				sb.append("</script>");
 				response.setCharacterEncoding("UTF-8");
 				response.setContentType("text/html");
